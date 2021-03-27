@@ -1,8 +1,10 @@
 from django.http import HttpResponse
-
-# тут должна быть view-функция icecream_list(), но её нет
-# не забудьте про обязательный аргумент request
+from .models import icecream_db
 
 
 def icecream_list(request):
-    return HttpResponse('Здесь будет список сортов мороженого')
+    # Получаем данные: полный список сортов мороженого
+    db_query = icecream_db
+    icecreams = f'Список мороженого: {db_query}'
+    # Возвращаем результат в браузер пользователя
+    return HttpResponse(icecreams)
