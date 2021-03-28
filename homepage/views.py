@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+# Здесь импортируйте функцию render из файла django.shortcuts
 
 
 def index(request):
-    return HttpResponse('Анфиса для друзей ')
+    return render(request, 'homepage/index.html')
