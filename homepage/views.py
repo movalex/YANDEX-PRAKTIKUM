@@ -1,5 +1,4 @@
 from django.shortcuts import render
-# Здесь импортируйте функцию render из файла django.shortcuts
 
 
 def index(request):
