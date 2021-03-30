@@ -1,12 +1,11 @@
 from django.shortcuts import render
-# Здесь импортируйте icecream_db из файла models приложения icecream
+from icecream.models import icecream_db
 
 
 def index(request):
     icecreams = ''
     for i in range(len(icecream_db)):
-        # Измените строку, добавляемую к icecreams
-        icecreams += f"<a href='icecream/{i}/'>{icecream_db[i]['name']}</a><br>"        
+        icecreams += f"{icecream_db[i]['name']} | <a href='/icecream/{i}/'>Узнать состав</a><br>"
     context = {
         'icecreams': icecreams,
     }
