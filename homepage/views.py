@@ -26,21 +26,21 @@ def index(request):
     for i in range(len(icecream_db)):
         icecreams += (f'{icecream_db[i]["name"]} | '
                     f'<a href="icecream/{i}/">Узнать состав</a><br>')
-
     # Проверьте, что тип запроса — POST
-    if ...:
+    if request.method == "POST":
         # Извлеките из запроса имя друга и сохраните его в пременную selected_friend
-        selected_friend = ...
+        selected_friend = request.POST['friend']
+        print(selected_friend)
         # Получите название города и сохраните его в переменную city
-        city = ...
+        city = friends_db[selected_friend]
         # Запросите погоду в городе city и сохраните её в переменную weather
-        weather = ...
+        weather = what_weather(city)
         # В переменную friend_output запишите строку
         # "{Имя_друга}, тебе прислали мороженое!"
-        friend_output = ...
+        friend_output = f"{selected_friend}, тебе прислали мороженое"
         # В переменную city_weather запишите строку
         # "Погода в городе {название_города}: {погода_в_городе}"
-        city_weather = ...
+        city_weather = f"Погода в городе {city} : {weather}"
 
         # Этот блок кода выведет результаты работы view-функции в терминал тренажёра. 
         # После нажатия на кнопку "Проверить" будет автоматически отправлен тестовый запрос к проекту,
@@ -56,5 +56,7 @@ def index(request):
     context = {
         'icecreams': icecreams,
         'friends': friends,
+        'friend_output': friend_output,
+        'city_weather': city_weather,
     }
     return render(request, 'homepage/index.html', context)
