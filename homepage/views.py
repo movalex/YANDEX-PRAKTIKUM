@@ -1,17 +1,18 @@
 from django.shortcuts import render
 from icecream.models import icecream_db
-# Здесь импортируйте словарь friends_db из файла anfisa/models.py
+from anfisa.models import friends_db
 
 
 def index(request):
     icecreams = ''
-    # Создайте пустую переменную friends 
-    # Циклом обойдите словарь friends_db и сохраните все имена друзей в переменную friends
+    friends = ''
+    for name in friends_db:
+        friends += name + "<br>"
     for i in range(len(icecream_db)):
         icecreams += (f'{icecream_db[i]["name"]} |' 
                     f'<a href="icecream/{i}/">  Узнать состав</a><br>')
     context = {
         'icecreams': icecreams,
-        # Добавьте переменную friends в словарь context
+        'friends': friends,
     }
     return render(request, 'homepage/index.html', context)
