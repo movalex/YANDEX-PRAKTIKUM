@@ -5,23 +5,24 @@
   </head>
   <body>
       <h1>Анфиса для друзей</h1>
-       <img src="https://pictures.s3.yandex.net/resources/anfisa_1594642601.png">
+       <img src="https://code.s3.yandex.net/backend-developer/Anfisa/24.png">
        <br>
       <p>
-        {{ friend_output | safe }}
+        {{ friend_output }}
       </p>
       <p>
         {{ city_weather }}
       </p>
-      <form method="post" action="/">
+      <p>
+        Числовое значение температуры: {{ parsed_temperature }}
+      </p>
+      <form action="/" method="post">
         <h2>Выберите друга</h2>
           {{ friends|safe }}
         <h2>Выберите мороженое</h2>
           {{ icecreams|safe }}
         <br>
-          <input type="submit" value="Угостить">
+        <input type="submit" value="Угостить">
       </form>
-      <p>
-      </p>
   </body>
 </html>
